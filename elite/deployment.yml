@@ -2,33 +2,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tetris
+  name: elite-dep
+  label:
+    app: elite
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: tetris
+      app: elite
   template:
     metadata:
       labels:
-        app: tetris
+        app: elite
     spec:
       containers:
-      - name: tetris
-        image: shaikmustafa/mytetrisgame:v2
+      - name: elite
+        image: devops1117/elite:v_1.0
         ports:
-        - containerPort: 3000   # Use port 3000
+        - containerPort: 80   # Use port 3000
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: tetris-service
+  name: elite-svc
+  label:
+    app: elite
 spec:
   selector:
-    app: tetris
+    app: elite
   ports:
   - protocol: TCP
     port: 80                 # Expose port 80
-    targetPort: 3000
+    targetPort: 80
   type: LoadBalancer
