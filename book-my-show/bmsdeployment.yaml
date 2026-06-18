@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bms-deploy
+  labels:
+    app: bms
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: bms
+  template:
+    metadata:
+      name: bms
+      labels:
+        app: bms
+    spec:
+      containers:
+        - name: bms
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
