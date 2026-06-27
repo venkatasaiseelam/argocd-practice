@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elite-deploy
+  labels:
+    app: elite
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: elite
+  template:
+    metadata:
+      name: test-template
+      labels:
+        app: elite
+    spec:
+      containers:
+        - name: cont1
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
