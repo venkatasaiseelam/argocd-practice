@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: cont1
-          image: devops1117/elite:v_1.0
+          image: nginx
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
