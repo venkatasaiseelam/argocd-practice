@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elite-service
+  labels:
+    app: elite
+spec:
+  type: LoadBalancer
+  selector:
+    app: elite
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
